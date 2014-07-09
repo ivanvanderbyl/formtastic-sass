@@ -143,9 +143,7 @@ $floated_select_width: select-auto;
     padding: 0;
   }
   @else {
-    padding-# {$direction
-    }
-    : $padding;
+    padding-#{$direction}: $padding;
   }
 
 }
@@ -432,9 +430,7 @@ $floated_select_width: select-auto;
     float: left;
     width: $floated_label_width - $floated_label_padding_x;
     text-align: $floated_label_text_align;
-    padding-# {$floated_label_text_align
-    }
-    : $floated_label_padding_x;
+    padding-#{$floated_label_text_align}: $floated_label_padding_x;
   }
   li {
     ol {
@@ -589,11 +585,9 @@ $floated_select_width: select-auto;
 
 //
 @mixin float-inputs-for($dom_target, $margin_right: 10px, $line_height: 150%) {
-  # {$dom_target
-    } {
+  #{$dom_target} {
       @include float-inputs-core($margin_right, $line_height);
     }
-
   }
 
   //
@@ -621,12 +615,10 @@ $floated_select_width: select-auto;
   }
 
   @mixin grid-inputs-for($dom_target, $width: 100px, $line_height: 150%) {
-    # {$dom_target
-      } {
-        @include grid-inputs-core($width, $line_height);
-      }
-
+    #{$dom_target} {
+      @include grid-inputs-core($width, $line_height);
     }
+  }
 
     //--------------------------------------------------------
     // Labels
@@ -752,7 +744,7 @@ $floated_select_width: select-auto;
           @else {
             float: left;
             width: $label_width - $label_pad;
-            @else if $label_float == "left" {
+            @if $label_float == "left" {
               padding-left: $label_pad;
               text-align: left;
             }
@@ -778,7 +770,7 @@ $floated_select_width: select-auto;
             }
             @else {
               width: $label_width - $label_pad;
-              @else if $label_float == "left" {
+              @if $label_float == "left" {
                 padding-left: $label_pad;
               }
               @else {
@@ -814,7 +806,7 @@ $floated_select_width: select-auto;
           p.inline-hints, p.inline-errors, ul.errors {
             margin: 0 0 0 $label_width;
           }
-          @else if $full_width_inputs {
+          @if $full_width_inputs {
             &.string input, &.password input, &.numeric input, &.text textarea, select {
               width: $input_width;
             }
